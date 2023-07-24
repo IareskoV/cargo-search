@@ -1,0 +1,25 @@
+{
+  "transports": [
+    {
+      "name": "Transporter 1",
+      "location": "City A",
+      "cargoTypes": [1, 2],
+      "maxWeight": 5000,
+      "maxCargoDimensions": [20, 20, 20]
+    },
+    {
+      "name": "Transporter 2",
+      "location": "City B",
+      "cargoTypes": [1, 3],
+      "maxWeight": 3000,
+      "maxCargoDimensions": [30, 30, 30]
+    },
+    {
+      "name": "Transporter 3",
+      "location": "City C",
+      "cargoTypes": [2, 3],
+      "maxWeight": 4500,
+      "maxCargoDimensions": [25, 25, 25]
+    }
+  ]
+}

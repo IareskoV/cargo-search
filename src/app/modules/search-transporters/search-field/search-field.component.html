@@ -1,0 +1,40 @@
+<form [formGroup]="cargoForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="location">Location</label>
+    <input type="text" id="location" formControlName="location" />
+  </div>
+
+  <div>
+    <label for="cargoType">Cargo Type</label>
+    <select id="cargoType" formControlName="cargoType">
+      <option value="">Select a cargo type</option>
+      <option value="1">Type 1</option>
+      <option value="2">Type 2</option>
+      <option value="3">Type 3</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="cargoWeight">Cargo Weight</label>
+    <input type="number" id="cargoWeight" formControlName="cargoWeight" />
+  </div>
+
+  <div formGroupName="cargoDimensions">
+    <div>
+      <label for="length">Length</label>
+      <input type="number" id="length" formControlName="length" />
+    </div>
+
+    <div>
+      <label for="width">Width</label>
+      <input type="number" id="width" formControlName="width" />
+    </div>
+
+    <div>
+      <label for="height">Height</label>
+      <input type="number" id="height" formControlName="height" />
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="cargoForm.invalid">Submit</button>
+</form>

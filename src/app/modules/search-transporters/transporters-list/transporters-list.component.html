@@ -1,0 +1,20 @@
+<h2 class="transporter-heading">Transporter List</h2>
+
+<table class="transporter-table">
+  <thead>
+    <tr>
+      <th>Transporter Name</th>
+      <th>Location</th>
+      <th>Cargo Types</th>
+      <th>Max Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transporter of transportersObj?.transports">
+      <td>{{ transporter.name }}</td>
+      <td>{{ transporter.location }}</td>
+      <td>{{ transporter.cargoTypes.join(", ") }}</td>
+      <td>{{ transporter.maxWeight }}</td>
+    </tr>
+  </tbody>
+</table>

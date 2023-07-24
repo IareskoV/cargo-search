@@ -1,0 +1,6 @@
+<div class="container">
+  <app-search-field (searchCargo)="handleSearch($event)"></app-search-field>
+  <app-transporters-list
+    [transportersObj]="transportersToDisplay | async"
+  ></app-transporters-list>
+</div>
