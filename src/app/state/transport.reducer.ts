@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { Transport } from '../shared/interfaces/transport.interface';
 import {
   fetchFilteredTransportsFailure,
-  fetchFilteredTransportsSuccess,
+  fetchFilteredTransportersSuccess,
 } from './transport.actions';
 
 export interface AppState {
@@ -15,7 +15,7 @@ export const initialState: AppState = {
 
 export const transportReducer = createReducer(
   initialState,
-  on(fetchFilteredTransportsSuccess, (state, { filteredTransports }) => ({
+  on(fetchFilteredTransportersSuccess, (state, { filteredTransports }) => ({
     ...state,
     transports: filteredTransports,
   })),

@@ -8,12 +8,11 @@ import * as fromActions from './transport.actions';
 export class ApiEffects {
   fetchFilteredTransports$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromActions.FETCH_FILTERED_TRANSPORTS),
+      ofType(fromActions.FETCH_FILTERED_TRANSPORTERS),
       mergeMap(({ filters }) =>
-        this.apiService.getFilteredTransports(filters).pipe(
+        this.apiService.getFilteredTransporters(filters).pipe(
           map((filteredTransports) => {
-            console.log(filteredTransports);
-            return fromActions.fetchFilteredTransportsSuccess({
+            return fromActions.fetchFilteredTransportersSuccess({
               filteredTransports,
             });
           })

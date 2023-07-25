@@ -8,17 +8,17 @@ export class Transporter implements Transport {
   maxWeight: number;
   maxCargoDimensions: [number, number, number];
 
-  constructor(
-    name: string,
-    location: string,
-    cargoTypes: cargoTypes[],
-    maxWeight: number,
-    maxCargoDimensions: [number, number, number]
-  ) {
-    this.name = name;
-    this.location = location;
-    this.cargoTypes = cargoTypes;
-    this.maxWeight = maxWeight;
-    this.maxCargoDimensions = maxCargoDimensions;
+  constructor({
+    name,
+    location,
+    cargoTypes,
+    maxWeight,
+    maxCargoDimensions,
+  }: Partial<Transporter>) {
+    this.name = name || '';
+    this.location = location || '';
+    this.cargoTypes = cargoTypes || [];
+    this.maxWeight = maxWeight || 0;
+    this.maxCargoDimensions = maxCargoDimensions || [0, 0, 0];
   }
 }

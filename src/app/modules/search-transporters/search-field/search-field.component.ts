@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Transport } from 'src/app/shared/interfaces/transport.interface';
+import { Transporter } from 'src/app/shared/models/transporter.model';
 @Component({
   selector: 'app-search-field',
   templateUrl: './search-field.component.html',
@@ -36,7 +36,7 @@ export class SearchFieldComponent implements OnInit {
 
   onSubmit() {
     if (this.cargoForm.valid) {
-      this.searchCargo.emit(this.cargoForm.value as Transport);
+      this.searchCargo.emit(this.cargoForm.value as Transporter);
       this.cargoForm.reset();
     } else {
     }
