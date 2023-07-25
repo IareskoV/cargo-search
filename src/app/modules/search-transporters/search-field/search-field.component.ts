@@ -5,7 +5,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Transporter } from 'src/app/shared/models/transporter.model';
 @Component({
   selector: 'app-search-field',
@@ -42,18 +47,20 @@ export class SearchFieldComponent implements OnInit {
   onSubmit() {
     if (this.cargoForm.valid) {
       this.searchCargo.emit(this.cargoForm.value as Transporter);
-      this.cargoForm.markAsPristine();
       this.cargoForm.reset();
-      this.resetFormControls(this.cargoForm);
+      this.resetFormControls(this.cargoForm.controls);
     } else {
     }
   }
-  private resetFormControls(formGroup: FormGroup): void {
-    Object.values(formGroup.controls).forEach((control) => {
-      this.cargoForm.markAsPristine();
-      this.cargoForm.updateValueAndValidity();
-      if (control instanceof FormGroup) {
-        this.resetFormControls(control);
+  private resetFormControls(controls: any) {
+    Object.keys(controls).forEach((controlName) => {
+      const control = controls[controlName];
+      if (control instanceof FormControl) {
+        control.markAsPristine();
+        control.markAsUntouched();
+        control.setErrors(null);
+      } else if (control instanceof FormGroup) {
+        this.resetFormControls(control.controls);
       }
     });
   }
