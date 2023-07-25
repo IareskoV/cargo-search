@@ -8,7 +8,7 @@ run `npm i`
 
 ## Development server
 
-Run `ng serve` for a dev server and then tun `npm run start:mock`(to start mock server). Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+run `npm start` or Run `ng serve` for a dev server and then run `npm run start:mock`(to start mock server). Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## change mock data
 

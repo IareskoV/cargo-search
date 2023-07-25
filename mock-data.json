@@ -16,10 +16,59 @@
     },
     {
       "name": "Transporter 3",
-      "location": "City C",
+      "location": "City A",
       "cargoTypes": [2, 3],
       "maxWeight": 4500,
       "maxCargoDimensions": [25, 25, 25]
+    },
+    {
+      "name": "Transporter 4",
+      "location": "City B",
+      "cargoTypes": [1, 2, 3],
+      "maxWeight": 6000,
+      "maxCargoDimensions": [40, 40, 40]
+    },
+    {
+      "name": "Transporter 5",
+      "location": "City A",
+      "cargoTypes": [1],
+      "maxWeight": 2000,
+      "maxCargoDimensions": [15, 15, 15]
+    },
+    {
+      "name": "Transporter 6",
+      "location": "City B",
+      "cargoTypes": [2],
+      "maxWeight": 3500,
+      "maxCargoDimensions": [18, 18, 18]
+    },
+    {
+      "name": "Transporter 7",
+      "location": "City B",
+      "cargoTypes": [3],
+      "maxWeight": 4000,
+      "maxCargoDimensions": [22, 22, 22]
+    },
+    {
+      "name": "Transporter C",
+      "location": "City H",
+      "cargoTypes": [1, 2],
+      "maxWeight": 4500,
+      "maxCargoDimensions": [25, 30, 25]
+    },
+    {
+      "name": "Transporter 9",
+      "location": "City A",
+      "cargoTypes": [1, 3],
+      "maxWeight": 5500,
+      "maxCargoDimensions": [35, 35, 35]
+    },
+    {
+      "name": "Transporter 10",
+      "location": "City B",
+      "cargoTypes": [2, 3],
+      "maxWeight": 4800,
+      "maxCargoDimensions": [28, 28, 28]
     }
   ]
 }
