@@ -12,6 +12,7 @@ import { ApiEffects } from './state/transport.effects';
 import { ApiService } from './shared/services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InitialTransportEffects } from './state/initialTransport.effect';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot({ transports: transportReducer }, {}),
-    EffectsModule.forRoot([ApiEffects]),
+    EffectsModule.forRoot([ApiEffects, InitialTransportEffects]),
     BrowserAnimationsModule,
   ],
   providers: [ApiService],

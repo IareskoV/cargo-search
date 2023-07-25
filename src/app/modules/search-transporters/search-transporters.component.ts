@@ -15,7 +15,9 @@ export class SearchTransportersComponent implements OnInit {
     this.transportersToDisplay = this.transportService.transports$;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.transportService.getInitialTransports();
+  }
 
   handleSearch(event: any) {
     this.transportService.filterTransports(event);

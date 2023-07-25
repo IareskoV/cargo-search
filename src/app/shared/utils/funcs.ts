@@ -26,6 +26,7 @@ function isMaxCargoDimensionsLessThanOrEqualTo(
 }
 export function filterTransports(transports: Transport[], expected: Transport) {
   {
+    console.log(transports);
     return transports.filter((transport) => {
       return (
         (!expected.name ||

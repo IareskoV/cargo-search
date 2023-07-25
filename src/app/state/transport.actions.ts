@@ -7,6 +7,9 @@ export const FETCH_FILTERED_TRANSPORTERS_SUCCESS =
   '[Your Feature] Fetch Filtered Transports Success';
 export const FETCH_FILTERED_TRANSPORTERS_FAILURE =
   '[Your Feature] Fetch Filtered Transports Failure';
+export const FETCH_INTIAL_STATE_SUCCESS =
+  '[Your Feature] FETCH INTIAL STATE SUCCESS';
+export const FETCH_INTIAL_STATE = '[Your Feature] FETCH INTIAL STATE';
 
 export const fetchFilteredTransports = createAction(
   FETCH_FILTERED_TRANSPORTERS,
@@ -22,3 +25,9 @@ export const fetchFilteredTransportsFailure = createAction(
   FETCH_FILTERED_TRANSPORTERS_FAILURE,
   props<{ error: any }>()
 );
+
+export const fetchInitialStateSuccess = createAction(
+  FETCH_INTIAL_STATE_SUCCESS,
+  props<{ transports: Transport[] }>()
+);
+export const fetchInitialState = createAction(FETCH_INTIAL_STATE);

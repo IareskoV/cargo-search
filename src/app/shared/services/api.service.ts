@@ -11,8 +11,13 @@ export class ApiService {
 
   getFilteredTransporters(filters: Transporter): Observable<Transport[]> {
     //this filter should be at backend
+
     return this.http
       .get<Transporter[]>('http://localhost:3000/transports')
       .pipe(map((res) => filterTransports(res, filters)));
+  }
+
+  getAllTransporters(): Observable<Transport[]> {
+    return this.http.get<Transport[]>('http://localhost:3000/transports');
   }
 }

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { fetchFilteredTransports } from 'src/app/state/transport.actions';
+import {
+  fetchFilteredTransports,
+  fetchInitialState,
+} from 'src/app/state/transport.actions';
 
 import { Transport } from '../interfaces/transport.interface';
 
@@ -17,5 +20,9 @@ export class TransportService {
 
   filterTransports(desiredTransport: Transport) {
     this.store.dispatch(fetchFilteredTransports({ filters: desiredTransport }));
+  }
+
+  getInitialTransports() {
+    this.store.dispatch(fetchInitialState());
   }
 }
