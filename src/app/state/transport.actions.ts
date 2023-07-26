@@ -26,8 +26,12 @@ export const fetchFilteredTransportsFailure = createAction(
   props<{ error: any }>()
 );
 
+// actions for initial state on success update
+
 export const fetchInitialStateSuccess = createAction(
   FETCH_INTIAL_STATE_SUCCESS,
   props<{ transports: Transport[] }>()
 );
+
+// action to create initial state
 export const fetchInitialState = createAction(FETCH_INTIAL_STATE);

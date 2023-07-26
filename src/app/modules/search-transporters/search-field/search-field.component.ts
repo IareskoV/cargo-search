@@ -11,6 +11,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { cargoTypes } from 'src/app/shared/interfaces/enums/cargoTypes.enum';
 import { Transporter } from 'src/app/shared/models/transporter.model';
 @Component({
   selector: 'app-search-field',
@@ -26,11 +27,12 @@ export class SearchFieldComponent implements OnInit {
   }
   ngOnInit() {}
 
+  //method to return a new form
   createCargoForm() {
     return this.formBuilder.group({
       location: ['', Validators.required],
       cargoType: ['', Validators.required],
-      cargoWeight: ['', [Validators.required, Validators.min(1)]],
+      maxWeight: ['', [Validators.required, Validators.min(1)]],
       cargoDimensions: this.formBuilder.group({
         length: ['', [Validators.required, Validators.min(1)]],
         width: ['', [Validators.required, Validators.min(1)]],
@@ -45,14 +47,26 @@ export class SearchFieldComponent implements OnInit {
   }
 
   onSubmit() {
+    //handle submit
     if (this.cargoForm.valid) {
-      this.searchCargo.emit(this.cargoForm.value as Transporter);
+      let temp = {
+        maxCargoDimensions: Object.values(
+          this.cargoForm.value.cargoDimensions
+        ) as [number, number, number],
+        location: this.cargoForm.value.location,
+
+        maxWeight: this.cargoForm.value.maxWeight,
+        cargoTypes: [+this.cargoForm.value.cargoType],
+      };
+
+      this.searchCargo.emit(new Transporter(temp));
       this.cargoForm.reset();
       this.resetFormControls(this.cargoForm.controls);
     } else {
     }
   }
   private resetFormControls(controls: any) {
+    //reset form controls after submit
     Object.keys(controls).forEach((controlName) => {
       const control = controls[controlName];
       if (control instanceof FormControl) {

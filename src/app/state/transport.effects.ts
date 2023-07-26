@@ -4,6 +4,7 @@ import { mergeMap, map, catchError } from 'rxjs/operators';
 import { ApiService } from '../shared/services/api.service';
 import * as fromActions from './transport.actions';
 
+// effect to handle transport filter action
 @Injectable()
 export class ApiEffects {
   fetchFilteredTransports$ = createEffect(() =>

@@ -2,8 +2,8 @@ import { cargoTypes } from '../interfaces/enums/cargoTypes.enum';
 import { Transport } from '../interfaces/transport.interface';
 
 function containsAllCargoTypes(
-  desiredCargoTypes: cargoTypes[],
-  transportCargoTypes: cargoTypes[]
+  transportCargoTypes: cargoTypes[],
+  desiredCargoTypes: cargoTypes[]
 ): boolean {
   if (!desiredCargoTypes) return true;
 
@@ -12,37 +12,49 @@ function containsAllCargoTypes(
   );
 }
 
-function isMaxCargoDimensionsLessThanOrEqualTo(
+function isMaxCargoDimensionsmoreThanOrEqualTo(
   transportMaxCargoDimensions: number[],
   desiredMaxCargoDimensions: number[]
 ): boolean {
   if (!desiredMaxCargoDimensions) return true;
 
   return (
-    transportMaxCargoDimensions[0] <= desiredMaxCargoDimensions[0] &&
-    transportMaxCargoDimensions[1] <= desiredMaxCargoDimensions[1] &&
-    transportMaxCargoDimensions[2] <= desiredMaxCargoDimensions[2]
+    transportMaxCargoDimensions[0] >= desiredMaxCargoDimensions[0] &&
+    transportMaxCargoDimensions[1] >= desiredMaxCargoDimensions[1] &&
+    transportMaxCargoDimensions[2] >= desiredMaxCargoDimensions[2]
   );
 }
+
+function isMaxCargoWeightmoreThanOrEqualTo(
+  transportMaxCargoWeight: number,
+  desiredMaxCargoWeight: number
+): boolean {
+  return transportMaxCargoWeight >= desiredMaxCargoWeight;
+}
+
+function isLocationNameEqualTo(
+  transportLocationName: string,
+  desiredLocationName: string
+): boolean {
+  return (
+    transportLocationName.toLowerCase() === desiredLocationName.toLowerCase()
+  );
+}
+
 export function filterTransports(transports: Transport[], expected: Transport) {
   {
-    console.log(transports);
     return transports.filter((transport) => {
       return (
-        (!expected.name ||
-          transport.name.toLowerCase().includes(expected.name.toLowerCase())) &&
-        (!expected.location ||
-          transport.location
-            .toLowerCase()
-            .includes(expected.location.toLowerCase())) &&
-        (!expected.cargoTypes ||
-          containsAllCargoTypes(expected.cargoTypes, transport.cargoTypes)) &&
-        (!expected.maxWeight || transport.maxWeight <= expected.maxWeight) &&
-        (!expected.maxCargoDimensions ||
-          isMaxCargoDimensionsLessThanOrEqualTo(
-            transport.maxCargoDimensions,
-            expected.maxCargoDimensions
-          ))
+        isLocationNameEqualTo(transport.location, expected.location) &&
+        isMaxCargoWeightmoreThanOrEqualTo(
+          transport.maxWeight,
+          expected.maxWeight
+        ) &&
+        isMaxCargoDimensionsmoreThanOrEqualTo(
+          transport.maxCargoDimensions,
+          expected.maxCargoDimensions
+        ) &&
+        containsAllCargoTypes(transport.cargoTypes, expected.cargoTypes)
       );
     });
   }

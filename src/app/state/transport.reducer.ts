@@ -14,6 +14,7 @@ export const initialState: AppState = {
   transports: [],
 };
 
+//handle state change
 export const transportReducer = createReducer(
   initialState,
   on(fetchFilteredTransportersSuccess, (state, { filteredTransports }) => ({

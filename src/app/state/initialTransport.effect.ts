@@ -4,6 +4,7 @@ import { mergeMap, map } from 'rxjs/operators';
 import { ApiService } from '../shared/services/api.service';
 import * as fromActions from './transport.actions';
 
+//effect to fetch all transports (for initial state)
 @Injectable()
 export class InitialTransportEffects {
   fetchFilteredTransports$ = createEffect(() =>

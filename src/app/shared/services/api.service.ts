@@ -14,6 +14,7 @@ export class ApiService {
 
     return this.http
       .get<Transporter[]>('http://localhost:3000/transports')
+
       .pipe(map((res) => filterTransports(res, filters)));
   }
 
