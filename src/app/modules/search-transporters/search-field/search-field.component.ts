@@ -78,4 +78,26 @@ export class SearchFieldComponent implements OnInit {
       }
     });
   }
+  isRequiredFieldsHasValue() {
+    return Object.values(this.cargoForm.controls).every((control) => {
+      if (control instanceof FormGroup) {
+        // Recursively check nested form groups
+        return this.isAllFieldsHasValuesInputedInGroup(control);
+      } else {
+        // Check if the form control has a value
+        return !!control.value;
+      }
+    });
+  }
+  private isAllFieldsHasValuesInputedInGroup(group: FormGroup): boolean {
+    return Object.values(group.controls).every((control) => {
+      if (control instanceof FormGroup) {
+        // Recursively check nested form groups
+        return this.isAllFieldsHasValuesInputedInGroup(control);
+      } else {
+        // Check if the form control has a value
+        return !!control.value;
+      }
+    });
+  }
 }
